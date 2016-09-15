@@ -1,0 +1,27 @@
+.column {
+    display: inline-block;
+    position: relative;
+    width: 20%;
+    text-align: center;
+    margin: 0 auto ;
+}
+
+.ab-banner {
+    padding-left: 460px;
+    background: none;
+}
+
+.ab-email {
+    padding-top: 300px;
+    padding-left: 600px;
+}
+
+.btn {
+    padding-left: 10px;
+    outline: 0 none;
+    border: 0 none;
+}
+
+.ab-img {
+    padding-top: 100px;
+}
