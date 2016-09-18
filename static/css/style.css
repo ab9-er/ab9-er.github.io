@@ -7,13 +7,16 @@
 }
 
 .ab-banner {
-    padding-left: 460px;
     background: none;
+    text-align: center;
+    padding-top: 50px
 }
 
 .ab-email {
-    padding-top: 300px;
-    padding-left: 600px;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    text-align: center;
+    background: none
 }
 
 .btn {
@@ -24,4 +27,5 @@
 
 .ab-img {
     padding-top: 100px;
+    padding-left: 120px;
 }
