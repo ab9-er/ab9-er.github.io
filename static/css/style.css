@@ -25,7 +25,21 @@
     border: 0 none;
 }
 
-.ab-img {
-    padding-top: 100px;
-    padding-left: 120px;
+@media (min-width: 767px) {
+    .ab-img.col-md-3 {
+        padding-top: 100px;
+        padding-left: 60px;
+    }
+    .col-md-6.ab-img {
+        padding-top: 100px;
+        padding-left: 200px;
+    }
 }
+
+@media (max-width: 415px) {
+    .ab-img {
+        padding-top: 100px;
+        padding-left: 120px;
+    }
+}
+
