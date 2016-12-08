@@ -1,0 +1,69 @@
+==================================================================
+https://keybase.io/a_bhi_9
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://ab9-er.github.io
+  * I am a_bhi_9 (https://keybase.io/a_bhi_9) on keybase.
+  * I have a public key with fingerprint 261A 9500 5759 CE01 AE8D  22C3 6610 4511 1F5C EB1F
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "01016dbe1c0033ffe8bd500cbad9e1a0491426c25458103d93bba6d6ee117dc6497d0a",
+            "fingerprint": "261a95005759ce01ae8d22c3661045111f5ceb1f",
+            "host": "keybase.io",
+            "key_id": "661045111f5ceb1f",
+            "kid": "01016dbe1c0033ffe8bd500cbad9e1a0491426c25458103d93bba6d6ee117dc6497d0a",
+            "uid": "5b7dd98953b01d7afa376a9050b08a19",
+            "username": "a_bhi_9"
+        },
+        "service": {
+            "hostname": "ab9-er.github.io",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1481211895,
+    "expire_in": 157680000,
+    "prev": "1f054dd36e848d21e80228cc07c9489fd4044387f50554311390d4782e652f27",
+    "seqno": 9,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.60
+Comment: https://keybase.io/crypto
+
+yMImAnicrZJtSBRBGMf3tFIvk4giKsJaoRDsmNnd2ZcLJcEC+2YZiRjXzM6st6l3
+1+2eJaahH0oopEQjS0GTIqIXMyIiyt6jF9GEIsKkjLIPRkVCIULNWn7rY/NlmGf+
+/9/8n4e5vyBZ8PtyR/SPklz2wff0zomEUFK4/0etSKK0RgzWihVsZmOVlDluqMKm
+YlAEEECVEgZNAGTZsphOKALAJJgaDGKgGFCRVFNCCtIhkKkhE4JVqjIGoUZNVTE0
+CrCYI1p2pJzFY3E74nKspEJscA7SkGEyADHTqSSZsqpCoCAIoYVMRqDFjeGo4zl4
+OIIdFrCjvMYPoZl4/9D/59yJGRwiGqWGbiCZAEg1bGFZU7EBECBAx9DwhA6LR3AV
+42ocImE7ZIh1OSIvVtsm8+bqNTIrIMY6Fg+U2244Qf60FItH3agZreS3YdeNOUHP
+7dbEPPkeRkJ/QSFiRygfJXdUs7hjRyNiEHKl6doeGSo6lCDkQXNEtjdmx1nI9hRI
+U3XAl/cOq+ZIaAGkUCqrTFf46CHTgSTppgk001B0w6IKUBRZ1ywEEFJkCGUDUEXT
+JaYiyZI00WttdyQqBg0eE5dzpGOXR7CbiDOx7u7tsjmCzy/Mm5vkfTHBn7Zw9uOd
++5UqdBYvrtGt4qnMY/2PVo2Wpg10TefJjeRT/obrR/vOl2TnJoazpIltLdM9vsKT
+W5ZlsnsHz6SMvxhBbvuttsHw85Nr3yT5V39uYfNunUc33Tpd/roR9HQLDd+V0TFU
+37locuDU4ERJ26teeq75W7fpzJ/oH3+5b8WUr7GoIbbq+PZrWQuWTDnLt3YE6suS
+rvRObBr6wAZLlqYXNN9Nfr2jY7vQj49mF+HqNbApNbzrYWnj28vkwul1D9f7u8+m
+ZQxPfh5/1hW4Ub8yveHSoS9mX29XxlWh48iBnyN3EinCwJOUi4GW9tamzU3i++lH
+7/IfH75f0Jo3urDqwdhQZUXlzsRvZbNAPg==
+=hLCI
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/a_bhi_9
+
+==================================================================
+
