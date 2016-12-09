@@ -1,3 +1,8 @@
+.flyer {
+    font-family: 'Special Elite', cursive;
+    font-size: 60px;
+}
+
 .column {
     display: inline-block;
     position: relative;
