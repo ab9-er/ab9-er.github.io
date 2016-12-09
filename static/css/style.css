@@ -25,6 +25,10 @@
     border: 0 none;
 }
 
+.scale-down {
+     height: 128px;
+}
+
 @media (min-width: 767px) {
     .ab-img.col-md-3 {
         padding-top: 100px;
