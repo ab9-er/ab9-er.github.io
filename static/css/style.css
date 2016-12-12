@@ -43,6 +43,10 @@
         padding-top: 100px;
         padding-left: 200px;
     }
+    .col-md-9.ab-img {
+        padding-top: 100px;
+        padding-left: 600px;
+    }
 }
 
 @media (max-width: 415px) {
