@@ -47,17 +47,13 @@ span,
 }
 
 @media (min-width: 767px) {
-    .ab-img.col-md-3 {
+    .ab-img {
         padding-top: 100px;
-        padding-left: 60px;
+        padding-left: 180px;
+        float: left;
     }
-    .col-md-6.ab-img {
-        padding-top: 100px;
-        padding-left: 420px;
-    }
-    .col-md-9.ab-img {
-        padding-top: 100px;
-        padding-left: 600px;
+    .col-4 {
+        padding-left: 350px;
     }
 }
 
@@ -66,5 +62,7 @@ span,
         padding-top: 100px;
         padding-left: 120px;
     }
+    .col-4 {
+        padding-left: 120px;
+    }
 }
-
