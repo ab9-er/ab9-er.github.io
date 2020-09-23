@@ -42,18 +42,27 @@ p {font-family:Georgia, serif;font-size:14px;font-style:normal;font-weight:norma
         var current_image = document.getElementById("hell-image").src;
         if(current_image == ""){
             document.getElementById("hell-image").src = "img/01.gif";
+            document.getElementById("tg-btn").innerHTML = "NEXT";
         }else if(current_image.includes("img/01.gif")){
             document.getElementById("hell-image").src = "img/02.gif";
+            document.getElementById("tg-btn").innerHTML = "NEXT";
         }else if(current_image.includes("img/02.gif")){
             document.getElementById("hell-image").src = "img/03.gif";
+            document.getElementById("tg-btn").innerHTML = "NEXT";
         }else if(current_image.includes("img/03.gif")){
             document.getElementById("hell-image").src = "img/04.gif";
+            document.getElementById("tg-btn").innerHTML = "NEXT";
         }else if(current_image.includes("img/04.gif")){
             document.getElementById("hell-image").src = "img/05.gif";
+            document.getElementById("tg-btn").innerHTML = "NEXT";
         }else if(current_image.includes("img/05.gif")){
             document.getElementById("hell-image").src = "img/06.gif";
+            document.getElementById("tg-btn").innerHTML = "NEXT";
         }else if(current_image.includes("img/06.gif")){
             document.getElementById("hell-image").src = "img/07.gif";
+            document.getElementById("tg-btn").innerHTML = "NEXT";
+        }else if(current_image.includes("img/07.gif")){
+            document.getElementById("hell-image").src = "img/08.gif";
             document.getElementById("tg-btn").remove();
         }
     }
