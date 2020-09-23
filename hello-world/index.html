@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hello</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {background-color:#000000;background-image:url('img/back.jpg');background-position:top left;background-attachment:fixed;}
+h1{font-family:Arial, sans-serif;color:#000000;background-color:#ffffff;}
+p {font-family:Georgia, serif;font-size:14px;font-style:normal;font-weight:normal;color:#000000;background-color:#ffffff;}
+.container {
+  height: 100px;
+  position: relative;
+}
+.img-center {
+  margin: 0;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+  .btn {
+  border: none; /* Remove borders */
+  color: white; /* Add a text color */
+  padding: 14px 28px; /* Add some padding */
+  cursor: pointer; /* Add a pointer cursor on mouse-over */
+}
+
+.hell {background-color: #ff9800;} /* Orange */
+.hell:hover {background: #e68a00;}
+</style>
+<script type="text/javascript">
+  function toggle_img() {
+        var current_image = document.getElementById("hell-image").src;
+        if(current_image == ""){
+            document.getElementById("hell-image").src = "img/01.gif";
+        }else if(current_image.includes("img/01.gif")){
+            document.getElementById("hell-image").src = "img/02.gif";
+        }else if(current_image.includes("img/02.gif")){
+            document.getElementById("hell-image").src = "img/03.gif";
+        }else if(current_image.includes("img/03.gif")){
+            document.getElementById("hell-image").src = "img/04.gif";
+        }else if(current_image.includes("img/04.gif")){
+            document.getElementById("hell-image").src = "img/05.gif";
+        }else if(current_image.includes("img/05.gif")){
+            document.getElementById("hell-image").src = "img/06.gif";
+        }else if(current_image.includes("img/06.gif")){
+            document.getElementById("hell-image").src = "img/07.gif";
+            document.getElementById("tg-btn").remove();
+        }
+    }
+
+  function addimage() { 
+    var img = document.getElementById("hell-image");
+    toggle_img()
+    img.height = 200; 
+    img.width = 400;
+
+    //optionally set a css class on the image
+    // var class_name = "hell-image";
+    // img.setAttribute("class", class_name);
+
+    document.body.appendChild(img);
+  }
+</script>
+</head>
+<body>
+<div class="container">
+<div class="center">
+    <button id="tg-btn" class="btn hell" onclick="addimage();">CLICK ME</button>
+</div>
+<img id="hell-image" class="img-center"></img>
+</div>
+</body>
+</html>
