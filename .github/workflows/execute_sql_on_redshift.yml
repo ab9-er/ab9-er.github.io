@@ -1,0 +1,122 @@
+# GitHub Actions workflow that allows users to input parameters and execute SQL scripts on an AWS Redshift cluster
+
+name: Run SQL on Redshift
+
+# Give input to trigger workflow
+# This fulfills Requirements 1
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch name'
+        required: true
+        default: 'main'
+      sql_path:
+        description: 'SQL file or folder path'
+        required: true
+      execution_order:
+        description: 'File order (comma-separated, optional)'
+        required: false
+
+jobs:
+  run-sql:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Get the code from the specified branch
+      # This downloads the repository content so we can access SQL files
+      # This fulfills part 1 of Requirements 2
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch }}
+
+      # Step 2: Set up Python environment
+      # Python chosen because we will use boto3 Redshift Data API script
+      # This fulfills part 1 of Requirements 3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      # Step 3: Install boto3 library
+      # This fulfills part 1 of Requirements 3
+      - name: Install boto3
+        run: pip install boto3
+
+      # Step 4: Execute SQL files using boto3 and Redshift Data API
+      # Main logic for finding, ordering, and executing SQL files
+      # This fulfills part 2 and 3 of Requirements 3 and Requirements 5 related to logging and error handling
+      - name: Run SQL
+        env:
+          # AWS credentials for authentication, assuming Github has access to these
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          # Redshift connection parameters as provided in Requirements 4
+          REDSHIFT_DB: ${{ secrets.REDSHIFT_DB }}
+          REDSHIFT_USER: ${{ secrets.REDSHIFT_USER }}
+          REDSHIFT_CLUSTER_ID: ${{ secrets.REDSHIFT_CLUSTER_ID }}
+        run: |
+          python3 << 'EOF'
+          import os
+          import boto3
+          import glob
+          import time
+
+          # Initialise AWS Redshift Data API client using boto3
+          client = boto3.client('redshift-data', region_name='eu-west-1')
+
+          # Connection params
+          cluster_id = os.environ['REDSHIFT_CLUSTER_ID']
+          db_name = os.environ['REDSHIFT_DB']
+          db_user = os.environ['REDSHIFT_USER']
+
+          # SQL files and execution order
+          sql_path = "${{ inputs.sql_path }}"
+          execution_order = "${{ inputs.execution_order }}"
+
+          # Create a file execution order list using the inputs
+          if os.path.isfile(sql_path):
+              # if only one file then just execute that one file
+              sql_files = [sql_path]
+          else:
+              # list all files in a directory
+                  # use execution order to create a list of files
+                  sql_files = [os.path.join(sql_path, _f.strip()) for _f in execution_order.split(',')]
+              else:
+                  # deafult by names
+                  sql_files = sorted(glob.glob(os.path.join(sql_path, "*.sql")))
+
+          # Execute the sql files
+          # query_resp givesID for tracking execution status
+          for fp in sql_files:
+              print(f"Executing: {fp}")
+              with open(fp, 'r') as f:
+                  sql = f.read()
+              query_resp = client.execute_statement(
+                  ClusterIdentifier=cluster_id,
+                  Database=db_name,
+                  DbUser=db_user,
+                  Sql=sql
+              )
+
+              query_id = query_resp['Id']
+              print(f"Query ID: {query_id}")
+
+              while True:
+                  resp_status = client.describe_statement(Id=query_id)
+                  status = resp_status['Status']
+
+                  if status == 'FINISHED':
+                      print(f"Completed: {file_path}")
+                      break
+                  elif status == 'FAILED':
+                      err_msg = resp_status.get('Error', 'Unknown error')
+                      raise Exception(f"SQL execution failed: {err_msg}")
+                  elif status in ['SUBMITTED', 'STARTED', 'PICKED']:
+                      print(f"Status: {status}, waiting...")
+                      time.sleep(2)
+                  else:
+                      raise Exception(f"Unexpected status: {status}")
+
+          print("All SQL files executed successfully!")
+          EOF
