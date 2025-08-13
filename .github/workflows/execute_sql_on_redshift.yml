@@ -79,15 +79,14 @@ jobs:
               # if only one file then just execute that one file
               sql_files = [sql_path]
           else:
-              # list all files in a directory
-                  # use execution order to create a list of files
+              # If execution_order is provided, use it; otherwise, default to all *.sql files sorted
+              if execution_order:
                   sql_files = [os.path.join(sql_path, _f.strip()) for _f in execution_order.split(',')]
               else:
-                  # deafult by names
                   sql_files = sorted(glob.glob(os.path.join(sql_path, "*.sql")))
 
           # Execute the sql files
-          # query_resp givesID for tracking execution status
+          # query_resp gives ID for tracking execution status
           for fp in sql_files:
               print(f"Executing: {fp}")
               with open(fp, 'r') as f:
@@ -107,7 +106,7 @@ jobs:
                   status = resp_status['Status']
 
                   if status == 'FINISHED':
-                      print(f"Completed: {file_path}")
+                      print(f"Completed: {fp}")
                       break
                   elif status == 'FAILED':
                       err_msg = resp_status.get('Error', 'Unknown error')
